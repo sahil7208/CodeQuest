@@ -1,5 +1,9 @@
 import mongoose from 'mongoose';
 
+declare global {
+  var mongoose: mongoose.Connection;
+}
+
 
 let cached = global.mongoose;
 
@@ -20,7 +24,7 @@ async function dbConnect() {
   if (!cached.promise) {
     cached.promise = new Promise((resolve, reject) => {
       mongoose.connect(mongoUri, {
-        
+       
       })
       .then((mongooseInstance) => resolve(mongooseInstance))
       .catch((err) => reject(err));

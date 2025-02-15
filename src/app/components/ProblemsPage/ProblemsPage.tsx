@@ -1,7 +1,7 @@
 import { FC, useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import Link from "next/link";
-import { IQuestion } from "@/app/modals/questions";
+import { IQuestion, questions } from "@/app/modals/questions";
 import { FaQuestionCircle } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -22,8 +22,12 @@ const ProblemsPage: FC = () => {
         }
         const data = await res.json();
         setQuestions(data);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("An unknown error occurred");
+        }
       } finally {
         setIsLoading(false);
       }
@@ -76,9 +80,9 @@ console.log("question: ",question)
         </div>
       ) : (
         <div className="max-w-2xl mx-auto space-y-4">
-          {questions.map((category: any) => (
+          {questions.map((category: IQuestion) => (
            
-            <div key={category._id} className="bg-[#1a1a3b] shadow-lg rounded-lg overflow-hidden">
+            <div key={category._id as string} className="bg-[#1a1a3b] shadow-lg rounded-lg overflow-hidden">
               {/* Category Header */}
               <button
                 onClick={() => toggleCategory(category.category)}
@@ -104,7 +108,7 @@ console.log("question: ",question)
                 style={{ height: 0, opacity: 0 }}
               >
                <ul className="divide-y divide-gray-600">
-  {category.questions.map((question: any,index:any) => (
+  {category.questions.map((question: questions, index: number) => (
     question?.status === "Unlocked" ? (
       <Link key={index} href={`/problems/${question.id}`}>
         <li
@@ -126,7 +130,7 @@ console.log("question: ",question)
           </span>
           <span
             className={`text-sm ml-16 ${
-              question.status === "🔒Locked"
+              question.status !== "Unlocked"
                 ? "text-gray-500"
                 : "text-orange-400 font-semibold"
             }`}

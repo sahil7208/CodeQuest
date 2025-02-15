@@ -8,7 +8,7 @@ export interface TestCase {
 
 export interface Squestions extends Document {
     id: number;
-    title: String;
+    title: string;
     description: string[];
     testCases: TestCase[];
 }

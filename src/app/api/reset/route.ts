@@ -2,7 +2,8 @@
 // import dbConnect from '@/app/lib/mongodb';
 // import Question from '@/app/modals/questions';
 
-// export async function POST(req: NextRequest) {
+// export async function POST() {
+//     console.log("POST");
 //   try {
 //     // Connect to the database
 //     await dbConnect();

@@ -15,17 +15,17 @@ import { useRouter } from "next/navigation";
 
 const ProblemDetailsPage: FC = () => {
   const { id } = useParams();
-  const [code, setCode] = useState<String>();
-  const [loading, setLoading] = useState(false);
+  const [code, setCode] = useState<string>();
+ 
   const [loadingforSubmit, setLoadingforSubmit] = useState(false);
   const [loadingforRun, setLoadingforRun] = useState(false);
-  const [compilerResult, setCompilerResult] = useState("");
+  // const [compilerResult, setCompilerResult] = useState("");
   const [questions, setQuestions] = useState<Squestions | null>(null);
   const [results, setResults] = useState<string[]>([]);
   const [flip,setFlip] = useState(false)
-  const [canSubmit, setCanSubmit] = useState<Boolean>(false);
+  const [canSubmit, setCanSubmit] = useState<boolean>(false);
   const [isRunDisabled,setIsRunDisabled] = useState(false)
-const [showRewrite,setShowRewrite] = useState(false)
+
  
 
 
@@ -43,7 +43,7 @@ const [showRewrite,setShowRewrite] = useState(false)
         const data: Squestions = await res.json();
         console.log(data);
         setQuestions(data);
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.log(err)
       }
     }
@@ -83,11 +83,21 @@ const [showRewrite,setShowRewrite] = useState(false)
 
     try {
       for (const testCase of questions?.testCases) {
-        const generateStdin = (testCase: any) => {
+        interface TestCase {
+          input: string;
+          target?: string;
+          expectedOutput: string;
+        }
+
+        const generateStdin = (testCase: TestCase) => {
           const questionTitle = questions.title.toLowerCase();
           console.log("question title: ", questionTitle)
           if (questionTitle.includes("two sum")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0]; // Extract the array part, e.g., "[2,7,11,15]"
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0]; // Extract the array part, e.g., "[2,7,11,15]"
             const nums = JSON.parse(numsString); // Parse it into a JavaScript array
             const target = testCase.target;
 
@@ -96,12 +106,20 @@ const [showRewrite,setShowRewrite] = useState(false)
             const numsAsString = nums.join(" ");
             return `${numsAsString}\n${target}`;
           } else if (questionTitle.includes("best time to buy and sell stocks")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           } else if (questionTitle.includes("reverse string")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
@@ -112,24 +130,35 @@ const [showRewrite,setShowRewrite] = useState(false)
             }
 
           } else if (questionTitle.includes("reverse linked list")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           } else if (questionTitle.includes("detect cycle in linked list")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}\n${testCase.target}`;
           } else if (questionTitle.includes("valid parentheses")) {
             const numsString = testCase.input.match(/"([^"]+)"/)?.[1];
 
-            const numsAsString = numsString.split("").join("");
+            const numsAsString = numsString ? numsString.split("").join("") : "";
             return `${numsAsString}`;
           } else if (questionTitle.includes("min stack")) {
             // Extract input arrays using regular expressions
             const matches = testCase.input.match(/\[.*?\](?=\s*\[|\s*$)/g);  // Match each array (with non-greedy behavior)
 
+            if (!matches) {
+              throw new Error("Invalid input format");
+            }
             const numsString1 = matches[0];  // First array (["MinStack", "push", "push", "push", "getMin", "pop", "top", "getMin"])
             const numsString2 = matches[1];  // Second array ([[], [-2], [0], [-3], [], [], [], []])
 
@@ -142,78 +171,130 @@ const [showRewrite,setShowRewrite] = useState(false)
 
             // Format the strings as needed
             const operationsAsString = operations.join(" ");
-            const valuesAsString = values.map((value: any) => JSON.stringify(value)).join(" ");
+             values.map((value: unknown) => JSON.stringify(value)).join(" ");
 
             // Return formatted string
             return `${operationsAsString}\n${numsString2}`;
           }
 
           else if (questionTitle.includes("largest rectangle in histogram")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           } else if (questionTitle.includes("implement queue using stacks ")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           } else if (questionTitle.includes("sliding window maximum")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}\n${testCase.target}`;
           }
           else if (questionTitle.includes("circular queue")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           }
           else if (questionTitle.includes("maximum depth of binary tree")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           }
           else if (questionTitle.includes("validate binary tree")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           }
           else if (questionTitle.includes("serialize and deserialize")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           } else if (questionTitle.includes("graph valid tree")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           } else if (questionTitle.includes("course schedule")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           } else if (questionTitle.includes("minimum spanning tree")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           } else if (questionTitle.includes("climbing stairs")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           } else if (questionTitle.includes("longest increasing subsequence")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
           } else if (questionTitle.includes("edit distance")) {
-            const numsString = testCase.input.match(/\[.*\]/)[0];
+            const numsMatch = testCase.input.match(/\[.*\]/);
+            if (!numsMatch) {
+              throw new Error("Invalid input format");
+            }
+            const numsString = numsMatch[0];
             const nums = JSON.parse(numsString);
             const numsAsString = nums.join(" ");
             return `${numsAsString}`;
@@ -254,7 +335,13 @@ const [showRewrite,setShowRewrite] = useState(false)
           }, 3000);
         })
 
-        const result = resultResponse as any;
+        interface Result {
+          status_id: number;
+          status: { description: string };
+          stdout: string;
+        }
+
+        const result = resultResponse as Result;
         console.log("result: ", result)
         console.log("status id: ", result.status_id);
         console.log("status description : ", result.status.description);
@@ -280,7 +367,7 @@ const [showRewrite,setShowRewrite] = useState(false)
       }
       setResults(testResults);
       // gsap.fromTo('.result-container', { opacity: 0 }, { opacity: 1, duration: 1 });
-    } catch (error: any) {
+    } catch (error: unknown) {
       testResults.push("Error occurred while running the code.");
       setResults(testResults);
       console.log(error);
@@ -336,11 +423,11 @@ const [showRewrite,setShowRewrite] = useState(false)
       // Update local state to reflect the unlocked status
      
   
-      setCompilerResult("Code submitted");
+      //setCompilerResult("Code submitted");
        router.push("/problemset");
     } catch (err) {
       console.error("Error updating question status:", err);
-      setCompilerResult("Failed to unlock question. Please try again.");
+     // setCompilerResult("Failed to unlock question. Please try again.");
     } finally {
       setLoadingforSubmit(false);
     }
@@ -429,7 +516,7 @@ const [showRewrite,setShowRewrite] = useState(false)
               <div className="space-y-4">
                 {results.map((result, index) => {
                   const isPassed = result.includes("✔️");
-                  const resultClass = isPassed ? "text-green-400" : "text-red-400";
+                  //const resultClass = isPassed ? "text-green-400" : "text-red-400";
       
                   return (
                     <div

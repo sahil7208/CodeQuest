@@ -1,6 +1,6 @@
 import { Schema, model, models, Document } from 'mongoose';
 
-type questions = {
+export type questions = {
   id: string;
   title: string;
   difficulty: "Easy" | "Medium" | "Hard";

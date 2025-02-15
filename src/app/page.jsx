@@ -5,15 +5,13 @@ import { ReactLenis } from 'lenis/react';
 import { TextAnimate } from '@/components/ui/text-animate';
 import { TypingAnimation } from "@/components/ui/typing-animation";
 import { Meteors } from "@/components/ui/meteors";
-import {
-  Confetti,
-  
-} from "@/components/ui/confetti";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+
 import { useRouter } from 'next/navigation';
 
 export default function HorizontalScroll() {
   const ulRef = useRef();
-  const confettiRef = useRef(null);
+ 
   const navigate = useRouter();
 
   useEffect(() => {
@@ -48,6 +46,7 @@ export default function HorizontalScroll() {
     <ReactLenis root>
       <main>
         <article>
+         
           <header className="text-white relative w-full bg-slate-950 grid place-content-center h-[100vh]">
           <Meteors number={50} />
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
@@ -55,7 +54,7 @@ export default function HorizontalScroll() {
               <TypingAnimation>
               CodeQuest: Your Ultimate Coding Adventure
               </TypingAnimation>
-            </h1>
+            </h1> 
           </header>
           <section className="h-[500vh] w-[500vw] relative">
             <ul ref={ulRef} className="flex sticky top-0">
@@ -100,11 +99,11 @@ export default function HorizontalScroll() {
                     </TextAnimate>
                     </span>
                 </h2>
-                <p className="text-lg mt-4 text-white text-center max-w-lg">
+                <span className="text-lg mt-4 text-white text-center max-w-lg">
                   <TextAnimate animation="blurInUp" by="character">
                   Your journey has just begun. Explore, learn, and grow with CodeQuest – where every problem is an adventure.
                   </TextAnimate>
-                </p>
+                </span>
                 <button className="mt-6 px-6 py-3 bg-blue-600 text-white text-lg rounded-lg shadow-lg hover:bg-blue-700" onClick={() => navigate.push('/problemset')}>
                   Get Started Now
                 </button>

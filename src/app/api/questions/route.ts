@@ -1,14 +1,14 @@
-import { NextRequest, NextResponse } from 'next/server';
+import {  NextResponse } from 'next/server';
 import dbConnect from '@/app/lib/mongodb';
 import Question, { IQuestion } from '@/app/modals/questions';
 
-// Handler for GET requests
-export async function GET(req: NextRequest) {
+
+export async function GET() {
   try {
-    // Connect to the database
+   
     await dbConnect();
 
-    // Fetch all questions from the database
+    
     const questions: IQuestion[] = await Question.find({});
     return NextResponse.json(questions, { status: 200 });
   } catch (error) {
@@ -17,4 +17,3 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// Optional: Add support for other methods as needed
