@@ -27,7 +27,7 @@ const ProblemDetailsPage: FC = () => {
   const [isRunDisabled,setIsRunDisabled] = useState(false)
 
  
-
+console.log("id at :",id);
 
   const compilerRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +35,9 @@ const ProblemDetailsPage: FC = () => {
     const fetchQuestions = async () => {
       try {
         const res = await fetch(`/api/SpecificQuestions/${id}`, {
-          method: "GET",
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({id}),
         });
         if (!res.ok) {
           throw new Error("Failed to fetch questions")
@@ -395,11 +397,11 @@ const ProblemDetailsPage: FC = () => {
   
       // Step 1: Set the current question status to completed
       const responseforStatus = await fetch(`/api/submit/${currentId}/status`, {
-        method: "PATCH",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ status: "completed" }),
+        body: JSON.stringify({questionId: currentId}),
       });
   
       if (!responseforStatus.ok) {
@@ -410,10 +412,11 @@ const ProblemDetailsPage: FC = () => {
       const nextId = Number(id) + 1;
       console.log("nextID: ",nextId)
       const response = await fetch(`/api/submit/${nextId}/unlock`, {
-        method: "PATCH",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ questionId: nextId }),
       });
   
       if (!response.ok) {

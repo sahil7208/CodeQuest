@@ -2,7 +2,7 @@
 
 import dbConnect from "@/app/lib/mongodb";
 import SpecificQuestion, { Squestions } from "@/app/modals/SpecificQuestions";
-import {  NextResponse } from "next/server";
+import {  NextRequest, NextResponse } from "next/server";
 
 interface RouteParams {
   params: {
@@ -11,12 +11,12 @@ interface RouteParams {
 }
 
 
-export async function GET( context: RouteParams) {
+export async function POST(req: NextRequest) {
   try {
     await dbConnect(); 
-
-    const { id } = context.params; 
-
+   
+    const { id } = await req.json(); 
+    console.log("id: ",id)
     if (!id) {
       return NextResponse.json({ error: "ID is required" }, { status: 400 });
     }

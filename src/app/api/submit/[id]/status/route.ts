@@ -2,9 +2,9 @@ import dbConnect from "@/app/lib/mongodb";
 import Question, { IQuestion } from "@/app/modals/questions";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function PATCH( context: { params: { id: string } }) {
-    const { params } = context;
-    const questionId = params?.id;
+export async function POST( req: NextRequest) {
+   // const { params } = context;
+    const {questionId} = await req.json();
 
     try {
         console.log("Attempting to connect to the database...");
