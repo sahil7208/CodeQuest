@@ -1,0 +1,12 @@
+{
+  "/api/questions/route": "app/api/questions/route.js",
+  "/api/SpecificQuestions/[id]/route": "app/api/SpecificQuestions/[id]/route.js",
+  "/api/reset/route": "app/api/reset/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/api/submit/[id]/unlock/route": "app/api/submit/[id]/unlock/route.js",
+  "/api/submit/[id]/status/route": "app/api/submit/[id]/status/route.js",
+  "/page": "app/page.js",
+  "/problemset/page": "app/problemset/page.js",
+  "/problems/[id]/page": "app/problems/[id]/page.js"
+}
