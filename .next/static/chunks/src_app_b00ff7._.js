@@ -20,7 +20,7 @@ const NavBar = ()=>{
             className: "container mx-auto flex flex-wrap p-4 md:px-10 flex-col md:flex-row items-center",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-                    className: "flex lg:w-2/5 flex-wrap items-center justify-start text-base space-x-8 md:ml-auto",
+                    className: "hidden sm:flex lg:w-2/5 flex-wrap items-center justify-start text-base space-x-8 md:ml-auto",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                         className: "relative text-xl transition-all duration-300 group hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-purple-500 via-pink-400 to-orange-300",
                         href: "#",
@@ -84,7 +84,7 @@ const NavBar = ()=>{
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0",
+                    className: "lg:w-2/5 hidden  sm:inline-flex lg:justify-end ml-5 lg:ml-0",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         className: "inline-flex items-center bg-gradient-to-r from-purple-500 via-pink-400 to-orange-300 text-white font-semibold border-0 py-2 px-4 focus:outline-none hover:bg-gradient-to-r hover:from-pink-400 hover:via-purple-400 hover:to-blue-600 rounded-full shadow-md transition-all duration-300 hover:scale-105",
                         children: [
@@ -234,10 +234,10 @@ const ProblemsPage = ()=>{
         setExpandedCategory((prev)=>prev === categoryName ? null : categoryName);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-[#0c0c29] p-8 z-0",
+        className: "min-h-screen bg-[#0c0c29] p-4 sm:p-8 z-0",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "text-3xl font-bold text-center mb-6 text-white",
+                className: "text-2xl sm:text-3xl font-bold text-center mb-6 text-white",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                     className: "bg-gradient-to-r from-purple-500 via-pink-400 to-orange-300 bg-clip-text text-transparent",
                     children: "Coding Questions"
@@ -292,18 +292,19 @@ const ProblemsPage = ()=>{
                 lineNumber: 77,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "max-w-2xl mx-auto space-y-4",
+                className: "max-w-4xl mx-auto space-y-4 mt-14",
                 children: questions.map((category)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "bg-[#1a1a3b] shadow-lg rounded-lg overflow-hidden",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>toggleCategory(category.category),
-                                className: "w-full flex justify-between items-center px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-lg hover:shadow-lg transition-shadow",
+                                className: "w-full flex justify-between items-center px-4 sm:px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-lg hover:shadow-lg transition-shadow",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "flex items-center gap-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaQuestionCircle"], {
-                                                className: "inline-block mr-2"
+                                                className: "inline-block mr-2 text-white"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/components/ProblemsPage/ProblemsPage.tsx",
                                                 lineNumber: 92,
@@ -343,10 +344,10 @@ const ProblemsPage = ()=>{
                                     children: category.questions.map((question, index)=>question?.status === "Unlocked" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                             href: `/problems/${question.id}`,
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                className: "grid grid-cols-3 px-6 py-3 opacity-100 hover:bg-[#2a2a5b] transition-colors",
+                                                className: "flex sm:flex-row px-4 sm:px-6 py-3 opacity-100 hover:bg-[#2a2a5b] transition-colors",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "font-medium text-white",
+                                                        className: "font-medium text-white flex-1",
                                                         children: [
                                                             question.id,
                                                             ". ",
@@ -354,15 +355,15 @@ const ProblemsPage = ()=>{
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/components/ProblemsPage/ProblemsPage.tsx",
-                                                        lineNumber: 117,
-                                                        columnNumber: 11
+                                                        lineNumber: 115,
+                                                        columnNumber: 10
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: `px-2 py-1 rounded-md text-xs mx-16 my-2 flex justify-center items-center ${question.difficulty === "Easy" ? "bg-green-100 text-green-700" : question.difficulty === "Medium" ? "bg-yellow-100 text-yellow-700" : "bg-red-100 text-red-700"}`,
+                                                        className: `px-2 py-1 rounded-md text-xs flex justify-center items-center ${question.difficulty === "Easy" ? "bg-green-100 text-green-700" : question.difficulty === "Medium" ? "bg-yellow-100 text-yellow-700" : "bg-red-100 text-red-700"}`,
                                                         children: question.difficulty
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/components/ProblemsPage/ProblemsPage.tsx",
-                                                        lineNumber: 120,
+                                                        lineNumber: 118,
                                                         columnNumber: 11
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -370,24 +371,24 @@ const ProblemsPage = ()=>{
                                                         children: question.status
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/components/ProblemsPage/ProblemsPage.tsx",
-                                                        lineNumber: 131,
+                                                        lineNumber: 129,
                                                         columnNumber: 11
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/components/ProblemsPage/ProblemsPage.tsx",
                                                 lineNumber: 114,
-                                                columnNumber: 9
+                                                columnNumber: 10
                                             }, this)
                                         }, index, false, {
                                             fileName: "[project]/src/app/components/ProblemsPage/ProblemsPage.tsx",
                                             lineNumber: 113,
                                             columnNumber: 7
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                            className: "grid grid-cols-3 px-6 py-3 opacity-50 cursor-not-allowed",
+                                            className: "flex flex-row sm:px-6 px-4  py-2 opacity-50 cursor-not-allowed",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "font-medium text-white",
+                                                    className: "font-medium text-white flex-1 mt-4",
                                                     children: [
                                                         question?.id,
                                                         ". ",
@@ -395,29 +396,29 @@ const ProblemsPage = ()=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/components/ProblemsPage/ProblemsPage.tsx",
-                                                    lineNumber: 147,
+                                                    lineNumber: 145,
                                                     columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: `px-2 py-1 rounded-md text-xs mx-16 my-2 flex justify-center items-center ${question?.difficulty === "Easy" ? "bg-green-100 text-green-700" : question?.difficulty === "Medium" ? "bg-yellow-100 text-yellow-700" : "bg-red-100 text-red-700"}`,
+                                                    className: `px-2 py-1 rounded-md text-xs mx-16 my-8 sm:my-4 flex justify-center items-center ${question?.difficulty === "Easy" ? "bg-green-100 text-green-700" : question?.difficulty === "Medium" ? "bg-yellow-100 text-yellow-700" : "bg-red-100 text-red-700"}`,
                                                     children: question?.difficulty
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/components/ProblemsPage/ProblemsPage.tsx",
-                                                    lineNumber: 150,
+                                                    lineNumber: 148,
                                                     columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: `text-sm ml-16 ${question?.status === "🔒Locked" ? "text-gray-500" : "text-orange-400 font-semibold"}`,
+                                                    className: `text-sm mt-4 ${question?.status === "🔒Locked" ? "text-gray-500" : "text-orange-400 font-semibold"}`,
                                                     children: question?.status
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/components/ProblemsPage/ProblemsPage.tsx",
-                                                    lineNumber: 161,
+                                                    lineNumber: 159,
                                                     columnNumber: 9
                                                 }, this)
                                             ]
                                         }, question?.id, true, {
                                             fileName: "[project]/src/app/components/ProblemsPage/ProblemsPage.tsx",
-                                            lineNumber: 143,
+                                            lineNumber: 141,
                                             columnNumber: 7
                                         }, this))
                                 }, void 0, false, {

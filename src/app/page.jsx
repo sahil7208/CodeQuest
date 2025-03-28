@@ -99,7 +99,7 @@ export default function HorizontalScroll() {
                     </TextAnimate>
                     </span>
                 </h2>
-                <span className="text-lg mt-4 text-white text-center max-w-lg">
+                <span className="text-lg mt-4 text-white text-center max-w-lg ">
                   <TextAnimate animation="blurInUp" by="character">
                   Your journey has just begun. Explore, learn, and grow with CodeQuest – where every problem is an adventure.
                   </TextAnimate>

@@ -61,8 +61,8 @@ console.log("question: ",question)
   };
 
   return (
-    <div className="min-h-screen bg-[#0c0c29] p-8 z-0">
-      <h1 className="text-3xl font-bold text-center mb-6 text-white">
+    <div className="min-h-screen bg-[#0c0c29] p-4 sm:p-8 z-0">
+      <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-white">
         <span className="bg-gradient-to-r from-purple-500 via-pink-400 to-orange-300 bg-clip-text text-transparent">
           Coding Questions
         </span>
@@ -79,17 +79,17 @@ console.log("question: ",question)
           No questions available. Please check back later!
         </div>
       ) : (
-        <div className="max-w-2xl mx-auto space-y-4">
+        <div className="max-w-4xl mx-auto space-y-4 mt-14">
           {questions.map((category: IQuestion) => (
            
             <div key={category._id as string} className="bg-[#1a1a3b] shadow-lg rounded-lg overflow-hidden">
               {/* Category Header */}
               <button
                 onClick={() => toggleCategory(category.category)}
-                className="w-full flex justify-between items-center px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-lg hover:shadow-lg transition-shadow"
+                className="w-full flex justify-between items-center px-4 sm:px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-lg hover:shadow-lg transition-shadow"
               >
-                <span>
-                  <FaQuestionCircle className="inline-block mr-2" />
+                <span className="flex items-center gap-2">
+                  <FaQuestionCircle className="inline-block mr-2 text-white" />
                   {category.category}
                 </span>
                 <IoIosArrowDown
@@ -111,14 +111,12 @@ console.log("question: ",question)
   {category.questions.map((question: questions, index: number) => (
     question?.status === "Unlocked" ? (
       <Link key={index} href={`/problems/${question.id}`}>
-        <li
-          className="grid grid-cols-3 px-6 py-3 opacity-100 hover:bg-[#2a2a5b] transition-colors"
-        >
-          <span className="font-medium text-white">
+         <li className="flex sm:flex-row px-4 sm:px-6 py-3 opacity-100 hover:bg-[#2a2a5b] transition-colors">
+         <span className="font-medium text-white flex-1">
             {question.id}. {question.title}
           </span>
           <span
-            className={`px-2 py-1 rounded-md text-xs mx-16 my-2 flex justify-center items-center ${
+            className={`px-2 py-1 rounded-md text-xs flex justify-center items-center ${
               question.difficulty === "Easy"
                 ? "bg-green-100 text-green-700"
                 : question.difficulty === "Medium"
@@ -142,13 +140,13 @@ console.log("question: ",question)
     ) : (
       <li
         key={question?.id}
-        className="grid grid-cols-3 px-6 py-3 opacity-50 cursor-not-allowed"
+        className="flex flex-row sm:px-6 px-4  py-2 opacity-50 cursor-not-allowed"
       >
-        <span className="font-medium text-white">
+        <span className="font-medium text-white flex-1 mt-4">
           {question?.id}. {question?.title}
         </span>
         <span
-          className={`px-2 py-1 rounded-md text-xs mx-16 my-2 flex justify-center items-center ${
+          className={`px-2 py-1 rounded-md text-xs mx-16 my-8 sm:my-4 flex justify-center items-center ${
             question?.difficulty === "Easy"
               ? "bg-green-100 text-green-700"
               : question?.difficulty === "Medium"
@@ -159,7 +157,7 @@ console.log("question: ",question)
           {question?.difficulty}
         </span>
         <span
-          className={`text-sm ml-16 ${
+          className={`text-sm mt-4 ${
             question?.status === "🔒Locked"
               ? "text-gray-500"
               : "text-orange-400 font-semibold"
